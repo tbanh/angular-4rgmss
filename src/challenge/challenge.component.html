@@ -2,7 +2,20 @@
   <form>
     <label for="firstName">
       First Name
-      <input type="text" name="firstName" required />
+      <input
+        type="text"
+        id="firstName"
+        name="firstName"
+        required
+        [(ngModel)]="firstName"
+        #name="ngModel"
+      />
+      <div
+        *ngIf="firstName.errors && (firstName.dirty || firstName.touched)"
+        class="alert alert-danger"
+      >
+        <div [hidden]="!firstName.errors.required">First Name is required</div>
+      </div>
     </label>
     <label for="lastName">
       Last Name

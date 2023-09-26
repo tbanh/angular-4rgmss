@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TextField } from '@material-ui/core';
 
 @Component({
   selector: 'app-challenge',
