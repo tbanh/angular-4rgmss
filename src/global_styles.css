@@ -1,0 +1,16 @@
+/* Add application styles & imports to this file! */
+:root {
+  --invalid-color: #ff1744;
+  --valid-color: #76ff03;
+  --subtle-text-color: #b0bec5;
+  --strong-text-color: #212121;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  color: var(--strong-text-color);
+}
