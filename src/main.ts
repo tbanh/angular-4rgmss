@@ -1,9 +1,10 @@
 import 'zone.js/dist/zone';
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { bootstrapApplication } from '@angular/platform-browser';
 import { InstructionsComponent } from './instructions.component';
 import { ChallengeComponent } from './challenge/challenge.component';
+
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
 
 @Component({
   selector: 'my-app',
