@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   FormGroup,
-  FormBuilder,
   Validators,
   ReactiveFormsModule,
+  FormControl,
 } from '@angular/forms';
 
 @Component({
@@ -15,15 +15,27 @@ import {
   styleUrls: ['./challenge.component.css'],
 })
 export class ChallengeComponent {
-  angForm: FormGroup;
-  constructor(private fb: FormBuilder) {
+  myform: FormGroup;
+  firstName: FormControl;
+  lastName: FormControl;
+  email: FormControl;
+
+  ngOnInit() {
+    this.createFormControls();
     this.createForm();
   }
+
+  createFormControls() {
+    this.firstName = new FormControl('', Validators.required);
+    this.lastName = new FormControl('', Validators.required);
+    this.email = new FormControl('', Validators.required);
+  }
+
   createForm() {
-    this.angForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', Validators.required],
+    this.myform = new FormGroup({
+      firstName: this.firstName,
+      lastName: this.lastName,
+      email: this.email,
     });
   }
 }

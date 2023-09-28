@@ -1,62 +1,65 @@
 <section class="challenge">
-  <form [formGroup]="angForm" novalidate>
+  <form [formGroup]="myform" novalidate>
     <div class="form-group">
-      <label for="firstName"> First Name </label>
+      <label for="firstName">First Name</label>
       <input
         class="form-control"
-        formClassName="firstName"
+        formControlName="firstName"
         type="text"
         required
       />
-    </div>
-    <div
-      *ngIf="
-        angForm.controls['firstName'].invalid &&
-        (angForm.controls['firstName'].dirty ||
-          angForm.controls['firstName'].touched)
-      "
-      class="alert alert-danger"
-    >
-      <div *ngIf="angForm.controls['firstName'].errors.required">
-        First Name is required.
+      <div
+        class="form-control-feedback"
+        *ngIf="
+          myform.get('firstName').hasError('required') &&
+          (myform.get('firstName').dirty || myform.get('firstName').touched)
+        "
+      >
+        <p *ngIf="myform.get('firstName').hasError('required')">
+          First Name is required
+        </p>
       </div>
     </div>
 
     <div class="form-group">
-      <label for="lastName"> Last Name </label>
+      <label for="lastName">Last Name</label>
       <input
         class="form-control"
-        formClassName="lastName"
+        formControlName="lastName"
         type="text"
         required
       />
-    </div>
-    <div
-      *ngIf="
-        angForm.controls['lastName'].invalid &&
-        (angForm.controls['lastName'].dirty ||
-          angForm.controls['lastName'].touched)
-      "
-      class="alert alert-danger"
-    >
-      <div *ngIf="angForm.controls['lastName'].errors.required">
-        Last Name is required.
+      <div
+        class="form-control-feedback"
+        *ngIf="
+          myform.get('lastName').hasError('required') &&
+          (myform.get('lastName').dirty || myform.get('lastName').touched)
+        "
+      >
+        <p *ngIf="myform.get('lastName').hasError('required')">
+          Last Name is required
+        </p>
       </div>
     </div>
 
     <div class="form-group">
-      <label for="email"> Email </label>
-      <input class="form-control" formClassName="email" type="text" required />
-    </div>
-    <div
-      *ngIf="
-        angForm.controls['email'].invalid &&
-        (angForm.controls['email'].dirty || angForm.controls['email'].touched)
-      "
-      class="alert alert-danger"
-    >
-      <div *ngIf="angForm.controls['email'].errors.required">
-        Email is required.
+      <label for="email">Email</label>
+      <input
+        class="form-control"
+        formControlName="email"
+        type="text"
+        required
+      />
+      <div
+        class="form-control-feedback"
+        *ngIf="
+          myform.get('email').hasError('required') &&
+          (myform.get('email').dirty || myform.get('email').touched)
+        "
+      >
+        <p *ngIf="myform.get('email').hasError('required')">
+          Email is required
+        </p>
       </div>
     </div>
 
