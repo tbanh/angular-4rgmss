@@ -1,5 +1,5 @@
 <section class="challenge">
-  <form [formGroup]="myform" novalidate>
+  <form [formGroup]="myform" validate>
     <div class="form-group">
       <label for="firstName">First Name</label>
       <input
@@ -64,17 +64,42 @@
     </div>
 
     <div class="form-group">
-      <label for="phone"> Phone Number </label>
-      <input class="form-control" formClassName="phone" type="text" />
+      <label for="phone">Phone Number</label>
+      <input class="form-control" formControlName="phone" type="text" />
     </div>
 
     <div>
-      <button type="button">Submit</button>
+      <button type="button" class="btn btn-primary" (click)="onSubmit()">
+        Submit
+      </button>
+      <div class="form-control-feedback">
+        <p *ngIf="isSubmitPressed && myform.invalid">
+          Please fill out the form.
+        </p>
+        <p *ngIf="apiError">
+          API Error: Please try again or clean up your data.
+        </p>
+      </div>
     </div>
   </form>
 
   <section id="usersList">
-    <input placeholder="Search" name="search" />
-    <div id="users"></div>
+    <input
+      placeholder="Search user by first name or last name"
+      [(ngModel)]="searchQuery"
+      name="search"
+    />
   </section>
+
+  <div *ngIf="userList.length > 0">
+    <h2>Users</h2>
+    <ul>
+      <li *ngFor="let user of filterUsers()">
+        <p><strong>First Name:</strong> {{ user.firstName }}</p>
+        <p><strong>Last Name:</strong> {{ user.lastName }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Phone:</strong> {{ user.phoneLastFourDigits }}</p>
+      </li>
+    </ul>
+  </div>
 </section>

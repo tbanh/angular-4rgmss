@@ -1,4 +1,4 @@
-input[type='text'],
+input,
 select {
   width: 100%;
   padding: 12px 20px;
@@ -18,4 +18,14 @@ div {
 .form-control-feedback {
   color: red;
   top: 0;
+}
+
+.has-error .form-control {
+  border-color: #a94442; /* Border color for error state */
+  background-color: #f2dede; /* Background color for error state */
+  color: #a94442; /* Text color for error state */
+}
+
+.has-error .form-control-feedback {
+  color: #a94442; /* Text color for error state */
 }
